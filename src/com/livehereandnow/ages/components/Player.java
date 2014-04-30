@@ -460,6 +460,12 @@ public class Player {
 
         return true;
     }
+public boolean doDestroy(int category, int age) throws AgesException {
+        table.getCard(category, age).getYellowPoints().addPoints(-1);
+        workPool.addPoints(1);
+
+        return true;
+    }
 
     public boolean doUpgrade(int category, int ageFrom, int ageTo) throws AgesException {
         table.getCard(category, ageTo).getYellowPoints().addPoints(1);

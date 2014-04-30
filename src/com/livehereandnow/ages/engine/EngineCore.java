@@ -90,7 +90,7 @@ public class EngineCore {
 
     public boolean doStatus() throws AgesException {
 
-        cardRow.show(1);
+        cardRow.show(11);//[A-亞歷山大大帝-領袖]
         System.out.println("\n   === 牌庫" + " === ");
         System.out.print("內政牌庫 時代I牌數:" + cardRow.getRemainingCardCount(1));
         System.out.print(" 時代II牌數:" + cardRow.getRemainingCardCount(2));
@@ -267,6 +267,12 @@ public class EngineCore {
 
     public boolean doBuild(int k, int k2) throws AgesException {
         get當前玩家().doBuild(k, k2);
+
+        return true;
+    }
+
+    public boolean doDestroy(int k, int k2) throws AgesException {
+        get當前玩家().doDestroy(k, k2);
 
         return true;
     }

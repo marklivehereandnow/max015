@@ -62,8 +62,8 @@ public class Engine {
                 return doVersion();
 
             case "change-turn":
-                case "c":
-                    case "":
+            case "c":
+            case "":
                 return core.doChangeTurn();
 
             default:
@@ -98,16 +98,20 @@ public class Engine {
 
     public boolean doCmd(String keyword, int p1, int p2) throws IOException, AgesException {
         switch (keyword) {
-            case "build":
-                case "b":
+            case "build": // build a Mine, Farm, Urban Building, Military Unit 
+            case "b":
                 return core.doBuild(p1, p2);
+            case "destroy": // DESTROY a Mine, Farm, Urban Building
+            case "disband": // DISBAND a Military Unit 
+            case "d":
+                return core.doDestroy(p1, p2);
 
-            
             case "打":
             case "out":
-                case "o":
+            case "o":
             case "play":
-            case "play-card":
+            case "play-card":   // PUT a LEADER INTO PLAY, PLAY AN ACTION CARD 
+            //
             case "out-card":
                 return core.doPlayCard(p1, p2);
 
@@ -117,10 +121,10 @@ public class Engine {
         }
     }
 
-      public boolean doCmd(String keyword, int p1, int p2, int p3) throws IOException, AgesException {
+    public boolean doCmd(String keyword, int p1, int p2, int p3) throws IOException, AgesException {
         switch (keyword) {
             case "upgrade":
-                case "u":
+            case "u":
                 return core.doUpgrade(p1, p2, p3);
 
             default:
@@ -129,15 +133,18 @@ public class Engine {
         }
     }
 
-    
-    
     public boolean doVersion() {
         System.out.println(" TODO   [A內政-亞歷山大圖書館 科技生產+1，文化生產+1，內政手牌上限+1，軍事手牌上限+1]  ");
-      
-          System.out.println("  === ver 0.67 ===  2014-4-30, 14:30, by Mark　");
+        //getBuildingLimit()
+        System.out.println("  === ver 0.68 ===  2014-4-30, 16:00, by Mark　");
+        System.out.println("    1. add getBuildingLimit() to return 3 for 君主制,神權政治 ");
+        System.out.println("    2. example for temporary solution, need to complete all Cards' info");
+        
+
+        System.out.println("  === ver 0.67 ===  2014-4-30, 14:30, by Mark　");
         System.out.println("    1. introduce History, including HistoryRecord ");
         System.out.println("    2. log take-card, play-card and change-turn to History");
-      
+
         System.out.println();
         System.out.println("  === ver 0.66 ===  2014-4-30, 12:50, by Max　");
         System.out.println("    1. fixed ###BUG### 我打了b 3 0但是系統顯示看不懂指令...Cureently command must be one or two words only! ");
@@ -151,22 +158,19 @@ public class Engine {
         System.out.println("  === ver 0.65 ===  2014-4-30, 11:00, by Max　");
         System.out.println("    1. fixed ###BUG### 我拿了一張農場牌，但是不能當回合打出，[時代I內政-灌溉-農場]...you cannot play this card this round ");
         System.out.println("    2. 新增change-turn簡易指令c跟..");
-        
-        
+
         System.out.println("  === ver 0.64 ===  2014-4-29, 16:30, by Mark　");
         System.out.println("    1. introduce CardDeck --- max:定義一個新的東西叫CardDeck");
         System.out.println("    2. 軍事牌庫: cnt=46 <<< using CardDeck --- max:用CardDeck宣告了一個變量，以這個變量匯入了46張並顯示出目前的張數");
-        
-        
+
         System.out.println("  === ver 0.63 ===  2014-4-29, 15:45, by Mark　");
         System.out.println("    1. show  內政牌庫:  remaining 時代 I:47 II:0 III:0 ---max:顯示出目前各時代內政牌組的張數");
-        
+
         System.out.println();
         System.out.println("  === ver 0.62 ===  2014-4-29, 15:45, by Mark　");
         System.out.println("    1. implement upgrade 3 0 1, Upgrad Farm from Age A to Age I ---max:已經實施了升級指令，指令upgrade 3 0 1,3表示農場0表示時代A1表示時代1");
         System.out.println("    2. new doCmd with 3 parameters---max:新增一個三個參數的指令");
-       
-        
+
         System.out.println();
         System.out.println("  === ver 0.61 ===  2014-4-29, 15:30, by Mark　");
         System.out.println("    1. add command build x y, for 實驗室/神廟/農場/礦山/步兵 ---max:新增一個指令build 有兩個參數x跟y,build 3 0 表是建造A時代的農場 ");
@@ -176,7 +180,7 @@ public class Engine {
         System.out.println("    1. add played[] to LeaderDeck  領袖 [A內政-漢摩拉比 內政點數+1，軍事點數-1]  taken:**23 played:*123 ---max:畫面顯示已經打了時代01的領袖牌，已經打出1領袖牌");
         System.out.println("    2. show  手牌上限值=5---max:驗證漢摩拉比效果，手牌上限值有提升");
         System.out.println("    3. on debug show  [I內政-君主制 內政點數+5，軍事點數+3 *5W5R*] ");
-      
+
         System.out.println("  === ver 0.59 ===  2014-4-29, 11:13, by Max　");
         System.out.println("    1. 新增DEBUG指令，並顯示手牌上限相關的卡名及其內容 ");
         System.out.println("    2.手牌上限值的定義，為當前板塊上的內政點數和");

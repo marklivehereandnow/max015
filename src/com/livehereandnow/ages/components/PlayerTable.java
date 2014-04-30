@@ -46,6 +46,19 @@ public class PlayerTable extends Object {
 //    }
     private Card cards政府;
 
+    public int  getBuildingLimit(){
+        //君主制,神權政治
+        
+        if ( cards政府.get卡名().equals("君主制")){
+           return  3;          
+        }
+        if ( cards政府.get卡名().equals("神權政治")){
+           return  3;          
+        }
+        
+        
+        return 2;
+    }
     public List<Card> get5x4() {
         List<Card> list = new ArrayList<>();
 
@@ -257,7 +270,7 @@ public class PlayerTable extends Object {
 //
 //    }
     private void show政府() {
-        System.out.print("    政府 " + cards政府.toString(7));
+        System.out.print("    政府 " + cards政府.toString(7)+ " Building Number limit: "+getBuildingLimit());
 
     }
 

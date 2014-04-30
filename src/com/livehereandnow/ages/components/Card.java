@@ -277,7 +277,7 @@ public class Card implements CardType {
         return 時代名[時代];
     }
 
-    public String get只有時代的時代名() {
+    public String getSimple時代名() {
         String[] 時代名 = {"A", "I", "II", "III"};
         return 時代名[時代];
     }
@@ -331,60 +331,70 @@ public class Card implements CardType {
                     return "[] ";
                 }
                 return "[" + get時代名() + get牌背名() + "-" + get卡名() + "-"  +get右上()+ "] ";
+         
+            case 11://
+                //  Value 1: 0[時代A內政-荷馬-領袖] 1[] 2[時代A內政-凱薩-領袖] 3[時代A內政-空中花園-奇蹟] 4[時代A內政-農業-科技] 
+                if (卡名.equalsIgnoreCase("")) {
+
+                    return "[] ";
+                }
+                return "[" + getSimple時代名()+ "-" + get卡名() + "-"  +get右上()+ "] ";
+         
+            
             case 2://[A內政-荷馬-領袖]
                 if (卡名.equalsIgnoreCase("")) {
                     return "[] ";
                 }
-                return "[" + get只有時代的時代名() + get牌背名() + "-" + get卡名() + "-" + get類型Name() + "] ";
+                return "[" + getSimple時代名() + get牌背名() + "-" + get卡名() + "-" + get類型Name() + "] ";
             case 3://奇蹟  [I內政-泰姬陵-奇蹟-建造成本:2,4,2]
                 if (卡名.equalsIgnoreCase("")) {
                     return "[] ";
                 }
-                return "[" + get只有時代的時代名() + get牌背名() + "-" + get卡名() + "-" + get類型Name() + "-建造成本:" + wonderStage + "] ";
+                return "[" + getSimple時代名() + get牌背名() + "-" + get卡名() + "-" + get類型Name() + "-建造成本:" + wonderStage + "] ";
             //"-"+this.奇蹟待建區.get().建造成本
             case 4://奇蹟  [I內政-泰姬陵-奇蹟-建造成本:*,4,2] *表示該段建造完成
                 if (卡名.equalsIgnoreCase("")) {
                     return "[] ";
                 }
-                return "[" + get只有時代的時代名() + get牌背名() + "-" + get卡名() + "-" + get類型Name() + "-建造成本:" + wonderStage + "] ";
+                return "[" + getSimple時代名() + get牌背名() + "-" + get卡名() + "-" + get類型Name() + "-建造成本:" + wonderStage + "] ";
             case 5://  [I-灌溉-科技-農場-建造成本:3/3]，因為要確認右上的字
                 if (卡名.equalsIgnoreCase("")) {
                     return "[] ";
                 }
-                return "[" + get只有時代的時代名() + "-" + get卡名() + "-" + get類型Name() + "-" + get右上() + "-建造成本:" + wonderStage + "] ";
+                return "[" + getSimple時代名() + "-" + get卡名() + "-" + get類型Name() + "-" + get右上() + "-建造成本:" + wonderStage + "] ";
             case 15:// including Round# [I-灌溉-科技-農場-建造成本:3/3]，因為要確認右上的字
                 if (卡名.equalsIgnoreCase("")) {
                     return "[] ";
                 }
-                return "[round#" + getRound() + "-" + get只有時代的時代名() + "-" + get卡名() + "-" + get類型Name() + "-" + get右上() + "-建造成本:" + wonderStage + "] ";
+                return "[round#" + getRound() + "-" + getSimple時代名() + "-" + get卡名() + "-" + get類型Name() + "-" + get右上() + "-建造成本:" + wonderStage + "] ";
 
             case 6://  0[A-Philosophy--實驗室  黃點:0 藍點:0]
                 if (卡名.equalsIgnoreCase("")) {
                     return "[] ";
                 }
-                return "[" + get只有時代的時代名() + "-" + get卡名() + "-" + "-" + get右上() + "  黃點:" + yellowPoints + " 藍點:" + bluePoints + "] ";
+                return "[" + getSimple時代名() + "-" + get卡名() + "-" + "-" + get右上() + "  黃點:" + yellowPoints + " 藍點:" + bluePoints + "] ";
             case 7:// for Government card, 
                 if (卡名.equalsIgnoreCase("")) {
                     return "[] ";
                 }
-                return "[" + get只有時代的時代名() + "-" + get卡名() + "-" + "-" + get右上() + "  白點:" + whitePoints + " 紅點:" + redPoints + "] ";
+                return "[" + getSimple時代名() + "-" + get卡名() + "-" + "-" + get右上() + "  白點:" + whitePoints + " 紅點:" + redPoints + "] ";
 
             case 8://for govt card
                 if (卡名.equalsIgnoreCase("")) {
                     return "[] ";
                 }
-                return "[" + get只有時代的時代名() + get牌背名() + "-" + get卡名() + " " + get內容() + " 建造成本:" + wonderStage + "] ";
+                return "[" + getSimple時代名() + get牌背名() + "-" + get卡名() + " " + get內容() + " 建造成本:" + wonderStage + "] ";
 
             case 9://for leader
                 if (卡名.equalsIgnoreCase("")) {
                     return "[] ";
                 }
-                return "[" + get只有時代的時代名() + get牌背名() + "-" + get卡名() + " " + get內容() + "] ";
+                return "[" + getSimple時代名() + get牌背名() + "-" + get卡名() + " " + get內容() + "] ";
             case 10://to show    內政點數 and  軍事點數 
                 if (卡名.equalsIgnoreCase("")) {
                     return "[] ";
                 }
-                return "[" + get只有時代的時代名() + get牌背名() + "-" + get卡名() + " " + get內容() + getWhiteRedString() + "] ";
+                return "[" + getSimple時代名() + get牌背名() + "-" + get卡名() + " " + get內容() + getWhiteRedString() + "] ";
 
             default:
                 return toString();
